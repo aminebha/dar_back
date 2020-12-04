@@ -13,5 +13,12 @@
     "morgan": "~1.9.1",
     "mysql": "github:mysqljs/mysql",
     "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1"
   }
 }

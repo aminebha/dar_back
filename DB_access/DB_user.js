@@ -76,10 +76,13 @@ getUserByEmail(login){
 ,
 //insert a user
   addUser(user){
-    return new Promise((resolve,resjct) => {
+    return new Promise((resolve,reject) => {
+      console.log(user)
       connection.query('INSERT INTO user SET ?', user, function (error, results, fields) {
-        if (error) 
+        if (error) {
+          console.log(error)
           reject(error);
+        }
         console.log(results.insertId);
         resolve(results)
       });

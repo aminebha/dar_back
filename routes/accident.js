@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
+const analayse = require('../services/analyseService')
 const db_accident= require('../DB_access/DB_accident');
+const { analyseData } = require('../services/analyseService');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -24,7 +26,8 @@ router.get('/user/:id', function(req, res, next) {
 
 router.post('/add', (req,res,next) =>{
     db_accident.addAcompletAccident(req.body).then((results) => {
-    res.json(results)
+      analyseData();
+      res.json(results)
   })
 })
 

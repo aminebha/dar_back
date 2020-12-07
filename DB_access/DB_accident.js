@@ -4,7 +4,7 @@ module.exports ={
    // methods to get vehicles
    getAllAccident(){
     return new Promise((resolve,reject)=>{
-      connection.query('SELECT * FROM accident,localisation,info_driver,info_vehicle', function (error, results, fields) {
+      connection.query('SELECT * FROM accident a,localisation,info_driver,info_vehicle,vehicle v,user u where a.id_vehicle = v.id and v.id_user = u.id', function (error, results, fields) {
         if (error){
           reject(error);
         }

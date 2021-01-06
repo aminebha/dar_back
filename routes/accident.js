@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 const analayse = require('../services/analyseService')
 const db_accident= require('../DB_access/DB_accident');
-const { analyseData } = require('../services/analyseService');
+const mailer = require('./../services/mail')
+//const { analyseData } = require('../services/analyseService');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -26,7 +27,9 @@ router.get('/user/:id', function(req, res, next) {
 
 router.post('/add', (req,res,next) =>{
     db_accident.addAcompletAccident(req.body).then((results) => {
-      analyseData();
+      if(req.body.accident.need_help === true){
+        mailer.main1(req.body.localisation);
+      }
       res.json(results)
   })
 })

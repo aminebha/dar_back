@@ -28,7 +28,7 @@ router.get('/user/:id', function(req, res, next) {
 router.post('/add', (req,res,next) =>{
     db_accident.addAcompletAccident(req.body).then((results) => {
       if(req.body.accident.need_help === true){
-        mailer.main1(req.body.localisation);
+        mailer.main(req.body.localisation);
       }
       res.json(results)
   })

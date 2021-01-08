@@ -48,24 +48,31 @@ return new Promise((resolve,resjct) => {
 }
 ,
 addAcompletAccident(object){
+  console.log(object)
     return new Promise((resolve,resjct) => {
         const accident = object.accident;
       connection.query('INSERT INTO localisation SET ?', object.localisation, function (error, results, fields) {
-        if (error) 
+        if (error) {
+          console.log(error)
           reject(error);
+        }
+        
         console.log(results.insertId);
         accident.id_localisation = results.insertId;
         connection.query('INSERT INTO info_driver SET ?', object.info_driver, function (error1, results1, fields1) {
             if (error1) 
-                reject(error1)
+              {console.log(error1)
+                reject(error1)}
             accident.id_info_driver = results1.insertId;
             connection.query('INSERT INTO info_vehicle SET ?', object.info_vehicle, function (error2, results2, fields2) {
-                if (error1) 
-                    reject(error2)
+                if (error2) 
+                  {console.log(error2)
+                    reject(error2)}
                 accident.id_info_vehicle = results2.insertId;
                 connection.query('INSERT INTO accident SET ?', accident, function (error3, results3, fields3) {
-                    if (error1) 
-                        reject(error3)
+                    if (error3) 
+                      {console.log(error3)
+                        reject(error3)}
                     accident.id_info_driver = results3.insertId;
                     resolve(results3.insertId)
                 });

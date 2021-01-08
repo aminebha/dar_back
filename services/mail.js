@@ -19,11 +19,11 @@ async function main(pos) {
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <foo@example.com>', // sender address
+    from: '"concours Projet N7" concoursprojetn7@gmail.com', // sender address
     to: "aminebha@gmail.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: '<b>Urgent</b> <p> une personne qui a besoin de l\'aide a la <a href="https://www.google.com/maps/search/?api=1&query={{row.latitude}},{{row.longitude}}" >Position</a><p/>', // html body
+    subject: "Urgence accident", // Subject line
+    text: "Urgence accident", // plain text body
+    html: '<b>Urgent</b> <p> une personne qui a besoin de l\'aide a la <a href="https://www.google.com/maps/search/?api=1&query='+pos.latitude+','+pos.longitude+'" >Position</a><p/>', // html body
   });
 
   console.log("Message sent: %s", info.messageId);
